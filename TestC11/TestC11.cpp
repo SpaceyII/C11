@@ -7,6 +7,8 @@
 #include <iostream>
 #include <algorithm>
 
+#include <numeric>
+
 #include "Something.h"
 #include "MyArray.h"
 
@@ -98,6 +100,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/********************************************************************/
 	/********************************************************************/
+	//C++ 11 initialization
+	vector<int> v1 = { 1, 3, 5, 7, 9, 11 };
+
+	//Á¬³Ë with Lamda expression
+	int res = accumulate(v1.begin(), v1.end(), 1, [](int n1, int n2){return n1*n2; });
+	cout << " The result is : " << res << endl;
+
 
 	return 0;
 }

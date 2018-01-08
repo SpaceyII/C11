@@ -20,6 +20,45 @@ public:
 		}
 	}
 
+	//左值构造 + 左值赋值
+	MyArray(MyArray& src)
+	{
+		this->mSize = src.mSize;
+		this->mArray = src.mArray;
+		cout << "This is lvalue ctor ~";
+	}
+	bool operator=(MyArray& src)
+	{
+		if (this == &src) return *this;
+	}
+
+	//右值构造 + 右值赋值
+	MyArray(MyArray&& src)
+	{
+		//Copy
+		this->mSize = src.mSize;
+		this->mArray = src.mArray;
+		cout << "This is rvalue ctor ~";
+		//Reset
+
+	}
+	MyArray& operator=(MyArray&& src)
+	{
+		if (this == &src) return *this;
+		if (mArray)
+		{
+			delete[] mArray;
+			mArray = nullptr;
+		}
+
+		//Copy
+		this->mSize = src.mSize;
+		this->mArray = src.mArray;
+		cout << "This is rvalue ctor ~";
+		//Reset
+
+	}
+
 	size_t getSize() const { return mSize; }
 	T& at(size_t index) throw(std::out_of_range)
 	{
