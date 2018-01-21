@@ -5,15 +5,48 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <algorithm>
+#include <set>
+#include <map>
+#include <list>
 
 #include <numeric>
+#include <algorithm>
+#include <functional>
+
+#include "ComplexNum.h"
 
 #include "Something.h"
 #include "MyArray.h"
 
 using namespace std;
+//谓词函数
 bool high5Num(int num){ return (num > 5); }
+
+typedef int u32;
+
+//<antId, lcrId>
+std::map<int, std::list<int> > _antCells;
+
+int opGetNumberOfCellsOnAntenna(int antId) {
+	return _antCells[antId].size();
+}
+
+void testCallback(const vector<int>& vec, const function<bool(int)>& callback)
+{
+	for (auto i : vec)
+	{
+		if (!callback(i))
+			break;
+		cout << i << ' ';
+	}
+	cout << endl;
+}
+
+void func(int num, const string& str)
+{
+	cout << "func(" << num << ", " << str << ")" << endl;
+}
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -106,6 +139,159 @@ int _tmain(int argc, _TCHAR* argv[])
 	//连乘 with Lamda expression
 	int res = accumulate(v1.begin(), v1.end(), 1, [](int n1, int n2){return n1*n2; });
 	cout << " The result is : " << res << endl;
+
+	/********************************************************************/
+	/********************************************************************/
+	cout << "\n\n\n\n\n" << endl;
+
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 1" << endl;
+
+	_antCells[40400].push_back(27001);
+	_antCells[40402].push_back(27001);
+
+	_antCells[40400].push_back(27002);
+	_antCells[40402].push_back(27002);
+
+	_antCells[40400].push_back(27003);
+	_antCells[40402].push_back(27003);
+
+	_antCells[40400].push_back(27004);
+	_antCells[40402].push_back(27004);
+
+	bool isFirstCellOnAntenna = (0 == opGetNumberOfCellsOnAntenna(40400));
+	cout << isFirstCellOnAntenna << endl;
+
+	auto itx = _antCells.begin();
+	auto itx2 = (itx->second).begin();
+
+	cout << itx->first << '\t' << *itx2 << endl;   //输出40400 27001
+
+	cout << "Part 1 End " << endl;
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 2" << endl;
+	list<pair<int, int> > cellList;
+
+	cellList.push_back(make_pair(27001, 40400));
+	cellList.push_back(make_pair(27002, 40400));
+	cellList.push_back(make_pair(27003, 40400));
+	cellList.push_back(make_pair(27004, 40400));
+
+	cellList.push_back(make_pair(27001, 40402));
+	cellList.push_back(make_pair(27002, 40402));
+	cellList.push_back(make_pair(27003, 40402));
+	cellList.push_back(make_pair(27004, 40402));
+
+	cout << " Before: " << endl;
+	for (auto itx3 = cellList.begin(); itx3 != cellList.end(); ++itx3)
+	{
+		cout << itx3->first << '\t' << itx3->second << endl;
+	}
+
+	cellList.sort();
+	cout << " After: " << endl;
+	for (auto itx3 = cellList.begin(); itx3 != cellList.end(); ++itx3)
+	{
+		cout << itx3->first << '\t' << itx3->second << endl;
+	}
+
+	if (!(_antCells.empty() && cellList.empty()))
+	{
+		cout << "两个至少有一个不为空~ " << _antCells.empty() << cellList.empty() << endl;
+	}
+	else
+	{
+		cout << "两个都为空~ " << endl;
+	}
+
+	cout << "Part 2 End " << endl;
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 3" << endl;
+	u32 idBALcrs[] = { 1, 2, 3, 4, 9, 10, 11, 12, 5, 6, 7, 8 }; // cell unit ids for expected missing BranchActivation licenses RnD faults
+	u32 idBAAnts[] = { 40400, 40912, 40656 }; // antennas unit ids for expected missing BranchActivation licenses customer faults (EFaultId_MissingLicenseAl)
+	set<u32> idBASet(idBALcrs, idBALcrs + sizeof(idBALcrs) / sizeof(idBALcrs[0]));
+	set<u32> idBACustomerSet(idBAAnts, idBAAnts + sizeof(idBAAnts) / sizeof(idBAAnts[0]));
+
+	for (auto i1 = idBASet.begin(); i1 != idBASet.end(); ++i1)
+	{
+		cout << *i1 << endl;
+	}
+
+	for (auto i1 = idBACustomerSet.begin(); i1 != idBACustomerSet.end(); ++i1)
+	{
+		cout << *i1 << endl;
+	}
+
+	cout << "Part 3 End " << endl;
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 4" << endl;
+	//test callback
+	vector<int> vec(10);
+	int index = 0;
+	generate(vec.begin(), vec.end(), [&index]{return ++index; });
+	for_each(vec.begin(), vec.end(), [](int i){cout << i << ' '; });
+	cout << endl;
+	testCallback(vec, [](int i){return i < 6; });
+
+	int cnt = count_if(vec.begin(), vec.end(), [=](int i){return i >= 6; });
+	cout << "Find " << cnt << " numbers more than 5~" << endl;
+
+	cout << "Part 4 End " << endl;
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 5" << endl;
+	//Test Bind, not1, men_fn()
+	string str = "Bind Fix";
+	auto f1 = bind(func, placeholders::_1, str);
+	f1(1);
+	auto f2 = bind(func, placeholders::_2, placeholders::_1);
+	f2(str, 2);
+
+	auto endx = idBASet.end();
+	auto resx = find_if(idBASet.begin(), endx, bind(greater_equal<u32>(), placeholders::_1, 10));
+	if (resx == endx)
+	{
+		cout << "No Result~" << endl;
+	}
+	else
+	{
+		cout << "Find a \"L10\" num of " << *resx << endl;
+	}
+
+	resx = find_if(idBASet.begin(), endx, [=](int i)->bool{return i == 10; });
+	if (resx == endx)
+	{
+		cout << "No Result~" << endl;
+	}
+	else
+	{
+		cout << "Find a non \"L10\" num of " << *resx << endl;
+	}
+
+
+	vector<string> svec = { "1", "2", "3", "4", "", "6" };
+	auto endx1 = svec.end();
+	auto res1 = find_if(svec.begin(), endx1, mem_fn(&string::empty));
+	if (res1 != endx1)
+	{
+		cout << "Empty str pos: " << res1 - svec.begin() << endl;
+	}
+
+
+	cout << "Part 5 End " << endl;
+	///////////////////////////////////////////////////////////////////////
+	cout << "Part 6" << endl;
+	//Test function template
+	ComplexNum<int> i3, i1{ 5, 6 }, i2{ 3, 4 };  //Template instantiate~
+	i1.print();
+	i2.print();
+	i3.print();
+
+	i1 = i1 + i2;
+	i1.print();
+
+
+	cout << "Part 6 End " << endl;
+	///////////////////////////////////////////////////////////////////////
 
 
 	return 0;
