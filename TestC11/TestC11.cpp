@@ -31,6 +31,7 @@ int opGetNumberOfCellsOnAntenna(int antId) {
 	return _antCells[antId].size();
 }
 
+//Callback 函数 - 系统调用的函数
 void testCallback(const vector<int>& vec, const function<bool(int)>& callback)
 {
 	for (auto i : vec)
@@ -133,7 +134,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/********************************************************************/
 	/********************************************************************/
-	//C++ 11 initialization
+	//C++ 11 general initialization 统一初始化
 	vector<int> v1 = { 1, 3, 5, 7, 9, 11 };
 
 	//连乘 with Lamda expression
@@ -145,6 +146,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "\n\n\n\n\n" << endl;
 
 	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	//测试项目代码
 	cout << "Part 1" << endl;
 
 	_antCells[40400].push_back(27001);
@@ -169,6 +172,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	cout << "Part 1 End " << endl;
 	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	//测试项目代码
 	cout << "Part 2" << endl;
 	list<pair<int, int> > cellList;
 
@@ -206,6 +211,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	cout << "Part 2 End " << endl;
 	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
+	//测试项目代码
 	cout << "Part 3" << endl;
 	u32 idBALcrs[] = { 1, 2, 3, 4, 9, 10, 11, 12, 5, 6, 7, 8 }; // cell unit ids for expected missing BranchActivation licenses RnD faults
 	u32 idBAAnts[] = { 40400, 40912, 40656 }; // antennas unit ids for expected missing BranchActivation licenses customer faults (EFaultId_MissingLicenseAl)
@@ -225,7 +232,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Part 3 End " << endl;
 	///////////////////////////////////////////////////////////////////////
 	cout << "Part 4" << endl;
-	//test callback
+	//test callback 功能
 	vector<int> vec(10);
 	int index = 0;
 	generate(vec.begin(), vec.end(), [&index]{return ++index; });
@@ -237,6 +244,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Find " << cnt << " numbers more than 5~" << endl;
 
 	cout << "Part 4 End " << endl;
+	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
 	cout << "Part 5" << endl;
 	//Test Bind, not1, men_fn()
@@ -279,6 +287,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	cout << "Part 5 End " << endl;
 	///////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////
 	cout << "Part 6" << endl;
 	//Test function template
 	ComplexNum<int> i3, i1{ 5, 6 }, i2{ 3, 4 };  //Template instantiate~
@@ -291,6 +300,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	cout << "Part 6 End " << endl;
+	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
 
 
