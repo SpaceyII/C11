@@ -9,6 +9,9 @@
 #include <map>
 #include <list>
 
+#include <atomic>
+#include <thread>
+
 #include <numeric>
 #include <algorithm>
 #include <functional>
@@ -48,6 +51,12 @@ void func(int num, const string& str)
 	cout << "func(" << num << ", " << str << ")" << endl;
 }
 
+void funcX(int counter) //atomic<int>& counter)
+{
+	for (int i = 0; i < 10000; ++i)
+		++counter;
+	cout << "Result = " << counter << endl;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -302,6 +311,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Part 6 End " << endl;
 	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
+	/********************************************************************/
+	/********************************************************************/
+	//测试多线程和原子操作
+	atomic<int> counter = { 0 };
+	vector<thread> thr;
+	for (int i = 0; i < 10; ++i)
+		thr.push_back(thread(funcX, std::ref(counter)));
+
+	for (auto& t : thr)
+		t.join();
+
+	
 
 
 	return 0;
