@@ -1,10 +1,10 @@
 // TestC11.cpp : Defines the entry point for the console application.
 //
-
 #include "stdafx.h"
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include <set>
 #include <map>
 #include <list>
@@ -17,6 +17,7 @@
 #include <functional>
 
 #include "ComplexNum.h"
+#include "Count2Num.h"
 
 #include "Something.h"
 #include "MyArray.h"
@@ -58,7 +59,7 @@ void funcX(int counter) //atomic<int>& counter)
 	cout << "Result = " << counter << endl;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+void testC11()
 {
 	/********************************************************************/
 	/********************************************************************/
@@ -101,17 +102,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	/********************************************************************/
 	/********************************************************************/
 	//测试STL里面基本find() find_if() accumulate()算法
-	int num;
+	/*	int num;
 	vector<int> myVec;
 	while (true)
 	{
-		cout << "Enter a number to add (0 to stop):";
-		cin >> num;
-		if (num == 0)
-		{
-			break;
-		}
-		myVec.push_back(num);
+	cout << "Enter a number to add (0 to stop):";
+	cin >> num;
+	if (num == 0)
+	{
+	break;
+	}
+	myVec.push_back(num);
 	}
 
 	//find algorithm
@@ -122,11 +123,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	auto it = find(myVec.begin(), end, num);
 	if (it == end)
 	{
-		cout << "find: Could not find " << num << endl;
+	cout << "find: Could not find " << num << endl;
 	}
 	else
 	{
-		cout << "find: Found" << *it << endl;
+	cout << "find: Found" << *it << endl;
 	}
 
 	//find_if algorithm
@@ -134,13 +135,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	it = find_if(myVec.begin(), myVec.end(), [](int i){return i > 5; });
 	if (it == end)
 	{
-		cout << "find_if: No number higher than 5 " << endl;
+	cout << "find_if: No number higher than 5 " << endl;
 	}
 	else
 	{
-		cout << "find_if: The first num higher than 5: " << *it << endl;
+	cout << "find_if: The first num higher than 5: " << *it << endl;
 	}
-
+	*/
 	/********************************************************************/
 	/********************************************************************/
 	//C++ 11 general initialization 统一初始化
@@ -322,9 +323,21 @@ int _tmain(int argc, _TCHAR* argv[])
 	for (auto& t : thr)
 		t.join();
 
-	
 
+	/********************************************************************/
+	/********************************************************************/
+	//测试stringstream
+	for (int i = 1970; i <= 1980; ++i)
+	{
+		char cSet = '/';
+		std::stringstream dateStream;
+		dateStream << "01" << cSet << "01" << cSet << i;
 
-	return 0;
+		cout << dateStream.str() << endl;
+	}
+	const std::string buildDate1("01/01/1995");
+	cout << buildDate1 << endl;
+
+	return;
 }
 
