@@ -83,6 +83,7 @@
     <ClInclude Include="ComplexNum.h" />
     <ClInclude Include="Count2Num.h" />
     <ClInclude Include="MyArray.h" />
+    <ClInclude Include="PrimeFactor357.h" />
     <ClInclude Include="Something.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -91,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="Count2Num.cpp" />
+    <ClCompile Include="PrimeFactor357.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
