@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include <iomanip>
+#include <string>
+#include <iostream>
 
 #include "TestC11.h"
 #include "Count2Num.h"
@@ -11,10 +13,34 @@
 
 using namespace std;
 
+class AAA
+{
+public:
+	friend ostream& operator<< (ostream& s, const AAA& a);
+
+	static AAA a;
+	//AAA ab;   //Error for in-class type
+	AAA* ac = nullptr;
+
+	void printB(char B = brand);
+private:
+	static const char brand = 'A';
+	//static const string addr("China"); //error
+	//static const char addr[] = "China";  //error
+	//static const char* pLOC("China");  //error
+	const int iAa = 3;
+};
+
+ostream& operator<< (ostream& s, const AAA& a)
+{
+	return s << "[Info]Brand: " << a.brand << " iAa Info:" << a.iAa << std::endl;
+}
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//Test C11
-//	testC11();
+	testC11();
 
 	//Test algorithm
 //	test();
@@ -42,7 +68,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Vector size: " << v.size() << " Max Size: " << v.max_size() << " Capacity: " << v.capacity() << endl;
 	cout << std::setfill('0') << std::setw(10) << 30843 << endl;
 
-
+	//test AAA
+	AAA a = AAA();
+	cout << a;
 
 	return 0;
 }

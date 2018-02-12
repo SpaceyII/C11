@@ -19,14 +19,14 @@ class Parent
 {
 public:
 	Parent() { cout << "1"; }
-	virtual ~Parent() { cout << "1"; }
+	virtual ~Parent() { cout << "1"; }  //基类必须为虚析构防止内存泄漏
 };
 
 class Child : public Parent
 {
 public:
 	Child() { cout << "3"; }
-	virtual ~Child() { cout << "3"; }
+	~Child() { cout << "3"; }   //最上层基类中析构函数已经为虚函数了，子类中析构一定为virtual属性的，这边子类可声明也可不声明
 protected:
 	Something mData;
 };
