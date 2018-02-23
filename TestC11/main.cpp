@@ -36,6 +36,28 @@ ostream& operator<< (ostream& s, const AAA& a)
 	return s << "[Info]Brand: " << a.brand << " iAa Info:" << a.iAa << std::endl;
 }
 
+namespace blip
+{
+	int bi = 1, bj = 2, bk = 3;
+}
+
+void func1()
+{
+	using namespace blip;
+	++bi;
+	++bj;
+	++bk;
+	cout << bi << '\t' << bj << '\t' << bk << endl;
+}
+
+void func2()
+{
+	using namespace blip;
+	++bi;
+	++bj;
+	++bk;
+	cout << bi << '\t' << bj << '\t' << bk << endl;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -71,6 +93,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	//test AAA
 	AAA a = AAA();
 	cout << a;
+
+	func1();
+	func2();
+	++blip::bi;
+	cout << blip::bi << '\t' << blip::bj << '\t' << blip::bk << endl;
 
 	return 0;
 }
