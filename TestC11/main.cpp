@@ -10,6 +10,7 @@
 #include "Count2Num.h"
 #include "BinaryTree.h"
 #include "PrimeFactor357.h"
+#include "VirtualBaseClass.h"
 
 using namespace std;
 
@@ -98,6 +99,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	func2();
 	++blip::bi;
 	cout << blip::bi << '\t' << blip::bj << '\t' << blip::bk << endl;
+	
+	//即使是C类在派生列表的最后，类C也是首先构造，因为C为虚基类。但是如果虚基类还有一个基类而且该基类不是虚基类，则必须先构造基类
+	//虽然E是虚基类而C不是，但是还是先构造了C，因为C是E的基类，在构造一个类之前，必须先构造基类，即使是虚继承也不例外。
+	D d;
 
 	return 0;
 }
