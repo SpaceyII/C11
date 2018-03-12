@@ -60,6 +60,34 @@ void func2()
 	cout << bi << '\t' << bj << '\t' << bk << endl;
 }
 
+
+class XXX
+{
+public:
+	virtual void As()
+	{
+		cout << "I am XXX: A" << endl;
+	}
+	virtual void Bb()
+	{
+		cout << "I am XXX: B" << endl;
+	}
+};
+
+class XXXA : public XXX
+{
+public:
+	virtual void As() override
+	{
+		cout << "I am XXXA: A" << endl;
+	}
+/*	virtual void Bb()
+	{
+		cout << "I am XXXA: B" << endl;
+	}*/
+};
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//Test C11
@@ -103,6 +131,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	//即使是C类在派生列表的最后，类C也是首先构造，因为C为虚基类。但是如果虚基类还有一个基类而且该基类不是虚基类，则必须先构造基类
 	//虽然E是虚基类而C不是，但是还是先构造了C，因为C是E的基类，在构造一个类之前，必须先构造基类，即使是虚继承也不例外。
 	D d;
+
+	//在子类没有实现父类的虚函数的时候，父类调用子类的指针去掉用虚函数接口时，会调用父类的虚函数实现，如果子类重实现了虚函数实现，则会调用子类的实现
+	XXX* asss = new XXXA;
+	asss->As();
+	asss->Bb();
 
 	return 0;
 }

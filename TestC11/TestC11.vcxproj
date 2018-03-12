@@ -82,6 +82,7 @@
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="ComplexNum.h" />
     <ClInclude Include="Count2Num.h" />
+    <ClInclude Include="DpendencyInversionPinciple.h" />
     <ClInclude Include="MyArray.h" />
     <ClInclude Include="PrimeFactor357.h" />
     <ClInclude Include="Something.h" />
