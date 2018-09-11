@@ -1,4 +1,4 @@
-// TestC11.cpp : Defines the entry point for the console application.
+ï»¿// TestC11.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
 #include <string>
@@ -23,7 +23,7 @@
 #include "MyArray.h"
 
 using namespace std;
-//Î½´Êº¯Êı
+//è°“è¯å‡½æ•°
 bool high5Num(int num){ return (num > 5); }
 
 typedef int u32;
@@ -35,7 +35,7 @@ int opGetNumberOfCellsOnAntenna(int antId) {
 	return _antCells[antId].size();
 }
 
-//Callback º¯Êı - ÏµÍ³µ÷ÓÃµÄº¯Êı
+//Callback å‡½æ•° - ç³»ç»Ÿè°ƒç”¨çš„å‡½æ•°
 void testCallback(const vector<int>& vec, const function<bool(int)>& callback)
 {
 	for (auto i : vec)
@@ -63,13 +63,13 @@ void testC11()
 {
 	/********************************************************************/
 	/********************************************************************/
-	//²âÊÔĞéÎö¹¹º¯Êı
+	//æµ‹è¯•è™šææ„å‡½æ•°
 	Parent* ptr = new Child();
 	delete ptr;
 
 	/********************************************************************/
 	/********************************************************************/
-	//Ê¹ÓÃÀàÄ£°å
+	//ä½¿ç”¨ç±»æ¨¡æ¿
 	MyArray<int> arrInt(10);
 	cout << "\n\nArray size: " << arrInt.getSize() << endl;
 	arrInt.at(3) = 42;
@@ -84,7 +84,7 @@ void testC11()
 		cout << "Caught exception: '" << e.what() << "'" << endl;
 	}
 
-	//Ê¹ÓÃÀàÄ£°å
+	//ä½¿ç”¨ç±»æ¨¡æ¿
 	MyArray<string> arrStr(5);
 	cout << "\n\nArray size: " << arrStr.getSize() << endl;
 	arrStr.at(3) = "This is a test";
@@ -101,7 +101,7 @@ void testC11()
 
 	/********************************************************************/
 	/********************************************************************/
-	//²âÊÔSTLÀïÃæ»ù±¾find() find_if() accumulate()Ëã·¨
+	//æµ‹è¯•STLé‡Œé¢åŸºæœ¬find() find_if() accumulate()ç®—æ³•
 	/*	int num;
 	vector<int> myVec;
 	while (true)
@@ -144,10 +144,10 @@ void testC11()
 	*/
 	/********************************************************************/
 	/********************************************************************/
-	//C++ 11 general initialization Í³Ò»³õÊ¼»¯
+	//C++ 11 general initialization ç»Ÿä¸€åˆå§‹åŒ–
 	vector<int> v1 = { 1, 3, 5, 7, 9, 11 };
 
-	//Á¬³Ë with Lamda expression
+	//è¿ä¹˜ with Lamda expression
 	int res = accumulate(v1.begin(), v1.end(), 1, [](int n1, int n2){return n1*n2; });
 	cout << " The result is : " << res << endl;
 
@@ -157,7 +157,7 @@ void testC11()
 
 	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
-	//²âÊÔÏîÄ¿´úÂë
+	//æµ‹è¯•é¡¹ç›®ä»£ç 
 	cout << "Part 1" << endl;
 
 	_antCells[40400].push_back(27001);
@@ -178,12 +178,12 @@ void testC11()
 	auto itx = _antCells.begin();
 	auto itx2 = (itx->second).begin();
 
-	cout << itx->first << '\t' << *itx2 << endl;   //Êä³ö40400 27001
+	cout << itx->first << '\t' << *itx2 << endl;  //è¾“å‡º40400 27001
 
 	cout << "Part 1 End " << endl;
 	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
-	//²âÊÔÏîÄ¿´úÂë
+	//æµ‹è¯•é¡¹ç›®ä»£ç 
 	cout << "Part 2" << endl;
 	list<pair<int, int> > cellList;
 
@@ -212,17 +212,17 @@ void testC11()
 
 	if (!(_antCells.empty() && cellList.empty()))
 	{
-		cout << "Á½¸öÖÁÉÙÓĞÒ»¸ö²»Îª¿Õ~ " << _antCells.empty() << cellList.empty() << endl;
+		cout <<"ä¸¤ä¸ªè‡³å°‘æœ‰ä¸€ä¸ªä¸ä¸ºç©º~" << _antCells.empty() << cellList.empty() << endl;
 	}
 	else
 	{
-		cout << "Á½¸ö¶¼Îª¿Õ~ " << endl;
+		cout << "ä¸¤ä¸ªéƒ½ä¸ºç©º~ " << endl;
 	}
 
 	cout << "Part 2 End " << endl;
 	///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////
-	//²âÊÔÏîÄ¿´úÂë
+	//æµ‹è¯•é¡¹ç›®ä»£ç 
 	cout << "Part 3" << endl;
 	u32 idBALcrs[] = { 1, 2, 3, 4, 9, 10, 11, 12, 5, 6, 7, 8 }; // cell unit ids for expected missing BranchActivation licenses RnD faults
 	u32 idBAAnts[] = { 40400, 40912, 40656 }; // antennas unit ids for expected missing BranchActivation licenses customer faults (EFaultId_MissingLicenseAl)
@@ -242,7 +242,7 @@ void testC11()
 	cout << "Part 3 End " << endl;
 	///////////////////////////////////////////////////////////////////////
 	cout << "Part 4" << endl;
-	//test callback ¹¦ÄÜ
+	//test callback åŠŸèƒ½
 	vector<int> vec(10);
 	int index = 0;
 	generate(vec.begin(), vec.end(), [&index]{return ++index; });
@@ -314,7 +314,7 @@ void testC11()
 	///////////////////////////////////////////////////////////////////////
 	/********************************************************************/
 	/********************************************************************/
-	//²âÊÔ¶àÏß³ÌºÍÔ­×Ó²Ù×÷
+	//æµ‹è¯•å¤šçº¿ç¨‹å’ŒåŸå­æ“ä½œ
 	atomic<int> counter = { 0 };
 	vector<thread> thr;
 	for (int i = 0; i < 10; ++i)
@@ -326,7 +326,7 @@ void testC11()
 
 	/********************************************************************/
 	/********************************************************************/
-	//²âÊÔstringstream
+	//æµ‹è¯•stringstream
 	for (int i = 1970; i <= 1980; ++i)
 	{
 		char cSet = '/';

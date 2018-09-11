@@ -1,8 +1,8 @@
-#ifndef _HEADER_H_
+ï»¿#ifndef _HEADER_H_
 #define _HEADER_H_
 
-/* ±¾¶Î´úÂëµÄÄ¿µÄÔÚÓÚµ±ÀàµÄÎö¹¹º¯Êý²»ÊÇÐéÎö¹¹µÄÊ±ºò£¬ÔÚ¼Ì³ÐÓëÅÉÉúµÄ¸÷Àà»áÔì³ÉÄÚ´æÐ¹Â©µÄÇé¿ö*/
-/* Ç¿ÁÒ½¨ÒéËùÓÐµÄÀàµÄÎö¹¹º¯ÊýÉùÃ÷³ÉÐéÎö¹¹º¯Êý*/
+/* æœ¬æ®µä»£ç çš„ç›®çš„åœ¨äºŽå½“ç±»çš„æžæž„å‡½æ•°ä¸æ˜¯è™šæžæž„çš„æ—¶å€™ï¼Œåœ¨ç»§æ‰¿ä¸Žæ´¾ç”Ÿçš„å„ç±»ä¼šé€ æˆå†…å­˜æ³„æ¼çš„æƒ…å†µ*/
+/* å¼ºçƒˆå»ºè®®æ‰€æœ‰çš„ç±»çš„æžæž„å‡½æ•°å£°æ˜Žæˆè™šæžæž„å‡½æ•°*/
 
 #include <iostream>
 
@@ -19,14 +19,14 @@ class Parent
 {
 public:
 	Parent() { cout << "1"; }
-	virtual ~Parent() { cout << "1"; }  //»ùÀà±ØÐëÎªÐéÎö¹¹·ÀÖ¹ÄÚ´æÐ¹Â©
+	virtual ~Parent() { cout << "1"; }  //åŸºç±»å¿…é¡»ä¸ºè™šæžæž„é˜²æ­¢å†…å­˜æ³„æ¼
 };
 
 class Child : public Parent
 {
 public:
 	Child() { cout << "3"; }
-	~Child() { cout << "3"; }   //×îÉÏ²ã»ùÀàÖÐÎö¹¹º¯ÊýÒÑ¾­ÎªÐéº¯ÊýÁË£¬×ÓÀàÖÐÎö¹¹Ò»¶¨ÎªvirtualÊôÐÔµÄ£¬Õâ±ß×ÓÀà¿ÉÉùÃ÷Ò²¿É²»ÉùÃ÷
+	~Child() { cout << "3"; }   //æœ€ä¸Šå±‚åŸºç±»ä¸­æžæž„å‡½æ•°å·²ç»ä¸ºè™šå‡½æ•°äº†ï¼Œå­ç±»ä¸­æžæž„ä¸€å®šä¸ºvirtualå±žæ€§çš„ï¼Œè¿™è¾¹å­ç±»å¯å£°æ˜Žä¹Ÿå¯ä¸å£°æ˜Ž
 protected:
 	Something mData;
 };

@@ -1,17 +1,17 @@
-#ifndef __DEPENDENCY_INVERSION_PRINCIPLE__
+ï»¿#ifndef __DEPENDENCY_INVERSION_PRINCIPLE__
 #define __DEPENDENCY_INVERSION_PRINCIPLE__
 
 /**
-* ÒÀÀµµ¹ÖÃÔ­Ôò£¨Dependency Inversion Principle£©
-* ÒÀÀµÓÚ³éÏó(½Ó¿Ú),²»ÒªÒÀÀµ¾ßÌåµÄÊµÏÖ(Àà)£¬Ò²¾ÍÊÇÕë¶Ô½Ó¿Ú±à³Ì¡£
+* ä¾èµ–å€’ç½®åŽŸåˆ™ï¼ˆDependency Inversion Principleï¼‰
+* ä¾èµ–äºŽæŠ½è±¡(æŽ¥å£),ä¸è¦ä¾èµ–å…·ä½“çš„å®žçŽ°(ç±»)ï¼Œä¹Ÿå°±æ˜¯é’ˆå¯¹æŽ¥å£ç¼–ç¨‹ã€‚
 */
 
-/*ÔÚÅÉÉúÀàÖÐ£¬ÖØÐ´ (override) ¼Ì³Ð×Ô»ùÀà³ÉÔ±º¯ÊýµÄÊµÏÖ (implementation) Ê±£¬ÒªÂú×ãÈçÏÂÌõ¼þ£º
-  Ò»Ðé£º»ùÀàÖÐ£¬³ÉÔ±º¯ÊýÉùÃ÷ÎªÐéÄâµÄ (virtual)
-  ¶þÈÝ£º»ùÀàºÍÅÉÉúÀàÖÐ£¬³ÉÔ±º¯ÊýµÄ·µ»ØÀàÐÍºÍÒì³£¹æ¸ñ (exception specification) ±ØÐë¼æÈÝ
-  ËÄÍ¬£º»ùÀàºÍÅÉÉúÀàÖÐ£¬³ÉÔ±º¯ÊýÃû¡¢ÐÎ²ÎÀàÐÍ¡¢³£Á¿ÊôÐÔ (constness) ºÍ ÒýÓÃÏÞ¶¨·û (reference qualifier) ±ØÐëÍêÈ«ÏàÍ¬
-  Èç´Ë¶àµÄÏÞÖÆÌõ¼þ£¬µ¼ÖÂÁËÐéº¯ÊýÖØÐ´ÈçÉÏÊö´úÂë£¬¼«ÈÝÒ×ÒòÎªÒ»¸ö²»Ð¡ÐÄ¶ø³ö´í
-  C++11 ÖÐµÄ override ¹Ø¼ü×Ö£¬¿ÉÒÔÏÔÊ½µÄÔÚÅÉÉúÀàÖÐÉùÃ÷£¬ÄÄÐ©³ÉÔ±º¯ÊýÐèÒª±»ÖØÐ´£¬Èç¹ûÃ»±»ÖØÐ´£¬Ôò±àÒëÆ÷»á±¨´í¡£
+/*åœ¨æ´¾ç”Ÿç±»ä¸­ï¼Œé‡å†™ (override) ç»§æ‰¿è‡ªåŸºç±»æˆå‘˜å‡½æ•°çš„å®žçŽ° (implementation) æ—¶ï¼Œè¦æ»¡è¶³å¦‚ä¸‹æ¡ä»¶ï¼š
+ä¸€è™šï¼šåŸºç±»ä¸­ï¼Œæˆå‘˜å‡½æ•°å£°æ˜Žä¸ºè™šæ‹Ÿçš„ (virtual)
+äºŒå®¹ï¼šåŸºç±»å’Œæ´¾ç”Ÿç±»ä¸­ï¼Œæˆå‘˜å‡½æ•°çš„è¿”å›žç±»åž‹å’Œå¼‚å¸¸è§„æ ¼ (exception specification) å¿…é¡»å…¼å®¹
+å››åŒï¼šåŸºç±»å’Œæ´¾ç”Ÿç±»ä¸­ï¼Œæˆå‘˜å‡½æ•°åã€å½¢å‚ç±»åž‹ã€å¸¸é‡å±žæ€§ (constness) å’Œ å¼•ç”¨é™å®šç¬¦ (reference qualifier) å¿…é¡»å®Œå…¨ç›¸åŒ
+å¦‚æ­¤å¤šçš„é™åˆ¶æ¡ä»¶ï¼Œå¯¼è‡´äº†è™šå‡½æ•°é‡å†™å¦‚ä¸Šè¿°ä»£ç ï¼Œæžå®¹æ˜“å› ä¸ºä¸€ä¸ªä¸å°å¿ƒè€Œå‡ºé”™
+C++11 ä¸­çš„ override å…³é”®å­—ï¼Œå¯ä»¥æ˜¾å¼çš„åœ¨æ´¾ç”Ÿç±»ä¸­å£°æ˜Žï¼Œå“ªäº›æˆå‘˜å‡½æ•°éœ€è¦è¢«é‡å†™ï¼Œå¦‚æžœæ²¡è¢«é‡å†™ï¼Œåˆ™ç¼–è¯‘å™¨ä¼šæŠ¥é”™ã€‚
 */
 
 #include <iostream>
@@ -64,7 +64,7 @@ class InterCPU : public CPU
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇInter CPU ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯Inter CPU æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 
@@ -73,7 +73,7 @@ class AMDCPU : public CPU
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇAMD CPU ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯AMD CPU æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 
@@ -82,7 +82,7 @@ class KingstomMemory : public Memory
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇKingstom Memory ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯Kingstom Memory æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 
@@ -91,7 +91,7 @@ class SamsungMemory : public Memory
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇSamsung Memory ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯Samsung Memory æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 
@@ -100,7 +100,7 @@ class WDHardDisk : public HardDisk
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇWD HardDisk ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯WD HardDisk æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 
@@ -109,7 +109,7 @@ class STHardDisk : public HardDisk
 public:
 	virtual void work() override
 	{
-		std::cout << "ÎÒÊÇST HardDisk ÎÒ¹¤×÷Á¼ºÃ" << std::endl;
+		std::cout << "æˆ‘æ˜¯ST HardDisk æˆ‘å·¥ä½œè‰¯å¥½" << std::endl;
 	}
 };
 

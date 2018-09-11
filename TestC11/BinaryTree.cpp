@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "BinaryTree.h"
 
 #include <vector>
@@ -6,7 +6,7 @@
 
 namespace NumberAlgm
 {
-	//Ëã·¨ÊµÏÖ£ºĞèÒªµİ¹é£¬Ê×ÏÈÈ·¶¨ÖĞ½ÚµãºÍ×óÓÒ²¿·Ö£¬preOrderµÄµÚÒ»¸ö¾ÍÊÇÖ÷½Úµã£¬inOrderÔÚÖ÷½Úµã×óÓÒÁ½±ßµÄ¾ÍÊÇ×óºÍÓÒ²¿·Ö
+	//ç®—æ³•å®ç°ï¼šéœ€è¦é€’å½’ï¼Œé¦–å…ˆç¡®å®šä¸­èŠ‚ç‚¹å’Œå·¦å³éƒ¨åˆ†ï¼ŒpreOrderçš„ç¬¬ä¸€ä¸ªå°±æ˜¯ä¸»èŠ‚ç‚¹ï¼ŒinOrderåœ¨ä¸»èŠ‚ç‚¹å·¦å³ä¸¤è¾¹çš„å°±æ˜¯å·¦å’Œå³éƒ¨åˆ†
 	string postOrder(string inOrder, string preOrder)
 	{
 		if (inOrder.size() == 1 || preOrder.size() == 1)
@@ -23,7 +23,7 @@ namespace NumberAlgm
 		}
 		posNode = inOrder.find(preOrder.at(0));
 
-		//ÏÈÕÒ³öÖĞĞòInOrderÖĞ×ó±ßºÍÓÒ±ßµÄ²¿·Ö£¬ÔÙÕÒ³öÏÈĞòÖĞ×ó±ßºÍÓÒ±ßµÄ²¿·Ö
+		//å…ˆæ‰¾å‡ºä¸­åºInOrderä¸­å·¦è¾¹å’Œå³è¾¹çš„éƒ¨åˆ†ï¼Œå†æ‰¾å‡ºå…ˆåºä¸­å·¦è¾¹å’Œå³è¾¹çš„éƒ¨åˆ†
 		cout << "InOrder: " << inOrder << " PreOrder:" << preOrder << endl;
 		subInL = inOrder.substr(0, posNode);
 		subInR = inOrder.substr(posNode + 1, inOrder.size() - posNode);

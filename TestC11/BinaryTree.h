@@ -1,4 +1,4 @@
-#ifndef __BINARYTREE_H__
+ï»¿#ifndef __BINARYTREE_H__
 #define __BINARYTREE_H__
 
 #include <string>
@@ -7,7 +7,7 @@ using namespace std;
 
 namespace NumberAlgm
 {
-	//ÒÑÖªÏÈĞò±éÀúºÍÖĞĞò±éÀúÇóºóĞò±éÀú ÈçÏÈĞòABC£¬ÖĞĞòBAC, ÇóµÃºóĞòBCA
+	//å·²çŸ¥å…ˆåºéå†å’Œä¸­åºéå†æ±‚ååºéå† å¦‚å…ˆåºABCï¼Œä¸­åºBAC, æ±‚å¾—ååºBCA
 	string postOrder(string inOrder, string preOrder);
 }
 

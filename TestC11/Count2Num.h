@@ -1,11 +1,11 @@
-#ifndef __COUNT2NUM_H__
+ï»¿#ifndef __COUNT2NUM_H__
 #define __COUNT2NUM_H__
 
 namespace NumberAlgm
 {
-	//¼ÆËã0-nÖ®¼äÃ¿¸öÊýÖÐ³öÏÖ2µÄ¸öÊý×ÜºÍ
-	//±ÈÈçÊäÈë13 £¨²»°üº¬13£¬°üº¬13µÄÇé¿ö£©£¨0£¬1£¬2£¬3£¬4£¬5£¬6£¬7£¬8£¬9£¬10£¬11£¬12£©
-	//Êä³öÎ»2 £¨2ºÍ12°üº¬Á½¸ö2£©
+	//è®¡ç®—0-nä¹‹é—´æ¯ä¸ªæ•°ä¸­å‡ºçŽ°2çš„ä¸ªæ•°æ€»å’Œ
+	//æ¯”å¦‚è¾“å…¥13 ï¼ˆä¸åŒ…å«13ï¼ŒåŒ…å«13çš„æƒ…å†µï¼‰ï¼ˆ0ï¼Œ1ï¼Œ2ï¼Œ3ï¼Œ4ï¼Œ5ï¼Œ6ï¼Œ7ï¼Œ8ï¼Œ9ï¼Œ10ï¼Œ11ï¼Œ12ï¼‰
+	//è¾“å‡ºä½2 ï¼ˆ2å’Œ12åŒ…å«ä¸¤ä¸ª2ï¼‰
 	int count2Num(int num);
 
 	void test();

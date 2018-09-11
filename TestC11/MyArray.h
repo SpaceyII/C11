@@ -1,5 +1,5 @@
-/* ±¾¶Î´úÂëµÄÒâÒåÔÚÓÚÊµÏÖÀàÄ£°å£¬ÀàÄ£°åµÄÉùÃ÷ÓëÊµÏÖ¶¼±ØÐëÔÚÍ·ÎÄ¼þÖÐÉùÃ÷ÍêÈ«£¬ÕâÑù±àÒëÆ÷ÔÚ
-   ´´½¨Ä£°åÀàµÄÊµÀýµÄÊ±ºò²Å»áÖªµÀËùÓÐµÄÄ£°åÊµÏÖÏ¸½Ú*/
+ï»¿/* æœ¬æ®µä»£ç çš„æ„ä¹‰åœ¨äºŽå®žçŽ°ç±»æ¨¡æ¿ï¼Œç±»æ¨¡æ¿çš„å£°æ˜Žä¸Žå®žçŽ°éƒ½å¿…é¡»åœ¨å¤´æ–‡ä»¶ä¸­å£°æ˜Žå®Œå…¨ï¼Œè¿™æ ·ç¼–è¯‘å™¨åœ¨
+åˆ›å»ºæ¨¡æ¿ç±»çš„å®žä¾‹çš„æ—¶å€™æ‰ä¼šçŸ¥é“æ‰€æœ‰çš„æ¨¡æ¿å®žçŽ°ç»†èŠ‚*/
 
 #include <stdexcept>
 
@@ -20,7 +20,7 @@ public:
 		}
 	}
 
-	//×óÖµ¹¹Ôì + ×óÖµ¸³Öµ
+	//å·¦å€¼æž„é€  + å·¦å€¼èµ‹å€¼
 	MyArray(MyArray& src)
 	{
 		this->mSize = src.mSize;
@@ -32,7 +32,7 @@ public:
 		if (this == &src) return *this;
 	}
 
-	//ÓÒÖµ¹¹Ôì + ÓÒÖµ¸³Öµ
+	//å³å€¼æž„é€  + å³å€¼èµ‹å€¼
 	MyArray(MyArray&& src)
 	{
 		//Copy
